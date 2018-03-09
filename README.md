@@ -4,7 +4,7 @@ The client was a fellow friend of mine, so I decided to help him out for an extr
 
 # Technologies
 - HTML5
-- CSS3
+- CSS3 (Materialize)
 - JavaScript
 - JSON (WebStorage)
 
