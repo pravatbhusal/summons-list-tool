@@ -8,9 +8,11 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
-		<!--jquery, materializejs-->
+		<!--jquery, jqueryui, materializejs-->
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+		
 	</header>
 
 	<main>
@@ -32,91 +34,91 @@
 					<th>Summon List</th>
 				  </tr>
 				  <tr>
-					<td>Test</td>
+					<td type="button" id="summon" class="draggable">Test</td>
 				  </tr>
 				</table>
 			</div>
 			<div class="col s6">
 				<div class="row">
 					<div class="col s6">
-						<ul id="field-collection" class="collection">
+						<ul class="field-collection collection droppable">
 							<li class="collection-item">
-								<span class="field-title-name title">Summoner Name - </span>
-								<span class="field-title-hp">HP: </span>
-								<span class="field-title-atk">ATK: </span>
-								<span class="field-title-tcd">TCD: </span>
+								<span class="field-title-name title"></span>
+								HP: <input id="field-title-hp" class="browser-default" type="number"></span>
+								ATK: <input id="field-title-atk" class="browser-default" type="number"></span>
+								TCD: <input id="field-title-tcd" class="browser-default" type="number"></span>
 								<p>
-								Ability:<br>
-								Passive:<br>
-								(Flavor Text Here)
+								<text id="ability">Ability:</text><br>
+								<text id="passive">Passive:</text><br>
+								<text id="flavor-text"></text>
 								</p>
 							</li>
 						</ul>
-						<ul id="field-collection" class="collection">
+						<ul class="field-collection collection droppable">
 							<li class="collection-item">
-								<span class="field-title-name title">Summoner Name - </span>
-								<span class="field-title-hp">HP: </span>
-								<span class="field-title-atk">ATK: </span>
-								<span class="field-title-tcd">TCD: </span>
+								<span class="field-title-name title"></span>
+								HP: <input id="field-title-hp" class="browser-default" type="number"></span>
+								ATK: <input id="field-title-atk" class="browser-default" type="number"></span>
+								TCD: <input id="field-title-tcd" class="browser-default" type="number"></span>
 								<p>
-								Ability:<br>
-								Passive:<br>
-								(Flavor Text Here)
+								<text id="ability">Ability:</text><br>
+								<text id="passive">Passive:</text><br>
+								<text id="flavor-text"></text>
 								</p>
 							</li>
 						</ul>
 						<hr>
-						<ul id="field-collection" class="collection">
+						<ul class="field-collection collection droppable">
 							<li class="collection-item">
-								<span class="field-title-name title">Summoner Name - </span>
-								<span class="field-title-hp">HP: </span>
-								<span class="field-title-atk">ATK: </span>
-								<span class="field-title-tcd">TCD: </span>
+								<span class="field-title-name title"></span>
+								HP: <input id="field-title-hp" class="browser-default" type="number"></span>
+								ATK: <input id="field-title-atk" class="browser-default" type="number"></span>
+								TCD: <input id="field-title-tcd" class="browser-default" type="number"></span>
 								<p>
-								Ability:<br>
-								Passive:<br>
-								(Flavor Text Here)
+								<text id="ability">Ability:</text><br>
+								<text id="passive">Passive:</text><br>
+								<text id="flavor-text"></text>
 								</p>
 							</li>
 						</ul>
-						<ul id="field-collection" class="collection">
+						<ul class="field-collection collection droppable">
 							<li class="collection-item">
-								<span class="field-title-name title">Summoner Name - </span>
-								<span class="field-title-hp">HP: </span>
-								<span class="field-title-atk">ATK: </span>
-								<span class="field-title-tcd">TCD: </span>
+								<span class="field-title-name title"></span>
+								HP: <input id="field-title-hp" class="browser-default" type="number"></span>
+								ATK: <input id="field-title-atk" class="browser-default" type="number"></span>
+								TCD: <input id="field-title-tcd" class="browser-default" type="number"></span>
 								<p>
-								Ability:<br>
-								Passive:<br>
-								(Flavor Text Here)
+								<text id="ability">Ability:</text><br>
+								<text id="passive">Passive:</text><br>
+								<text id="flavor-text"></text>
 								</p>
 							</li>
 						</ul>
 					</div>
 					<div class="col s6 push-s4">
-						<ul id="field-collection" class="collection" style="margin-top: 100px">
+						<ul class="field-collection collection droppable" style="margin-top: 100px">
 							<li class="collection-item">
-								<span class="field-title-name title">Summoner Name - </span>
-								<span class="field-title-hp">HP: </span>
-								<span class="field-title-atk">ATK: </span>
-								<span class="field-title-tcd">TCD: </span>
+								<span class="field-title-name title"></span>
+								HP: <input id="field-title-hp" class="browser-default" type="number"></span>
+								ATK: <input id="field-title-atk" class="browser-default" type="number"></span>
+								TCD: <input id="field-title-tcd" class="browser-default" type="number"></span>
 								<p>
-								Ability:<br>
-								Passive:<br>
-								(Flavor Text Here)
+								<text id="ability">Ability:</text><br>
+								<text id="passive">Passive:</text><br>
+								<text id="flavor-text"></text>
 								</p>
 							</li>
 						</ul>
-						<ul id="field-collection" class="collection" style="margin-top: 185px">
+						<ul class="field-collection collection droppable" style="margin-top: 175px">
 							<li class="collection-item">
-								<span class="field-title-name title">Summoner Name - </span>
-								<span class="field-title-hp">HP: </span>
-								<span class="field-title-atk">ATK: </span>
-								<span class="field-title-tcd">TCD: </span>
+								<span class="field-title-name title"></span>
+								HP: <input id="field-title-hp" class="browser-default" type="number"></span>
+								ATK: <input id="field-title-atk" class="browser-default" type="number"></span>
+								TCD: <input id="field-title-tcd" class="browser-default" type="number"></span>
 								<p>
-								Ability:<br>
-								Passive:<br>
-								(Flavor Text Here)
+								<text id="ability">Ability:</text><br>
+								<text id="passive">Passive:</text><br>
+								<text id="flavor-text"></text>
 								</p>
 							</li>
 						</ul>
@@ -129,5 +131,39 @@
 	<footer>
 
 	</footer>
+	
+	<script>
+		//get all the summons from json and put it onto a table
+		
+		
+		
+		//draggable summons
+		$(".draggable").draggable({revert: "valid"});
+		
+		//droppable field collections
+		$( ".droppable" ).droppable({
+			classes: {},
+				drop: function(event, ui) {
+				/*once an item has been dropped*/
+				var summonName = $(ui.draggable).text() + " - ";
+				var HP = 1;
+				var ATK = 1;
+				var TCD = 1;
+				var ability = "Ability: " + "?";
+				var passive = "Passive: " + "?";
+				var flavorText = "No information on this summon...";
+				//get information from json regarding the dragged summon
+				
+				//set the target collection to the dragged summon's information
+				$(this).find(".field-title-name").html(summonName);
+				$(this).find("#field-title-hp").val(HP);
+				$(this).find("#field-title-atk").val(ATK);
+				$(this).find("#field-title-tcd").val(TCD);
+				$(this).find("#ability").html(ability);
+				$(this).find("#passive").html(passive);
+				$(this).find("#flavor-text").html(flavorText);
+			}
+		});
+	</script>
 </body>
 </html>

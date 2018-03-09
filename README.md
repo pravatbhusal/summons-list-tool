@@ -5,7 +5,7 @@ The client was a fellow friend of mine, so I decided to help him out.
 # Technologies
 - HTML5
 - CSS3 (Materialize)
-- JavaScript
+- JavaScript (jQuery)
 - JSON (WebStorage)
 
 # Set-up

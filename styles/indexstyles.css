@@ -20,26 +20,29 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+#summon:hover {
+	cursor: pointer;
+}
 
 /*summon field*/
+.field-collection {
+	width: 500px;
+}
 #field-title-text {
 	font-weight: bold;
 	text-align: center;
 }
-.field-title-name{
+.field-title-name {
 	font-weight: bold;
 }
-.field-title-hp {
-	
+#field-title-hp {
+	width: 50px;
 }
-.field-title-atk {
-	
+#field-title-atk {
+	width: 50px;
 }
-.field-title-tcd {
-	
-}
-#field-collection {
-	width: 500px;
+#field-title-tcd {
+	width: 50px;
 }
 hr {
 	width: 1045px;
