@@ -1,0 +1,46 @@
+/*navbar*/
+#nav-background {
+	background-color: white;
+}
+#nav-buttons {
+	color: black;
+}
+
+/*summon list table*/
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+/*summon field*/
+#field-title-text {
+	font-weight: bold;
+	text-align: center;
+}
+.field-title-name{
+	font-weight: bold;
+}
+.field-title-hp {
+	
+}
+.field-title-atk {
+	
+}
+.field-title-tcd {
+	
+}
+#field-collection {
+	width: 500px;
+}
+hr {
+	width: 1045px;
+}
