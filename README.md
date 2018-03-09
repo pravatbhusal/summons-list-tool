@@ -9,5 +9,5 @@ The client was a fellow friend of mine, so I decided to help him out for an extr
 # Installation
 1. Download this repository as a .zip file  
 2. Extract the .zip file  
-3. Find and open the "SummonsEditor.jar" file inside the unzipped folder  
+3. Find and open the "SummonsListTool.jar" file inside the unzipped folder  
 4. Finished!
