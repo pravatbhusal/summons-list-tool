@@ -29,12 +29,9 @@
 		<!--summon list and field text-->
 		<div class="row">
 			<div class="col s2">
-				<table>
+				<table id="summon-table">
 				  <tr>
 					<th>Summon List</th>
-				  </tr>
-				  <tr>
-					<td type="button" id="summon" class="draggable">Test</td>
 				  </tr>
 				</table>
 			</div>
@@ -133,35 +130,53 @@
 	</footer>
 	
 	<script>
-		//get all the summons from json and put it onto a table
+		//get all the summons from the localStorage, and put it onto a table
+		for(var i = 0; i < localStorage.length; i++) {
+			//unparse the summon's JSON to get its name
+			var summonName = JSON.parse(localStorage.getItem("summon" + i)).name;
+			//continuously check if a summon exists for the index until we cannot find one
+			if(summonName) {
+				//add new node within the table
+				var nodeTR = document.createElement("tr");
+				var nodeTD = document.createElement("td");
+				summonName = document.createTextNode(summonName);
+				nodeTD.appendChild(summonName);
+				noteTD.setAttribute("data-index", ("summon" + i));
+				nodeTD.id = "summon";
+				nodeTD.className = "draggable";
+				nodeTR.appendChild(nodeTD);
+				var table = document.getElementById("summon-table");
+				table.appendChild(nodeTR);
+			} else {
+				break;
+			}
+		}
 		
-		
-		
-		//draggable summons
-		$(".draggable").draggable({revert: "valid"});
+		//draggable summons (revert when it hits a droppable, and make its z-index stack above divs)
+		$(".draggable").draggable({revert: "valid", stack: "div"});
 		
 		//droppable field collections
 		$( ".droppable" ).droppable({
 			classes: {},
 				drop: function(event, ui) {
-				/*once an item has been dropped*/
-				var summonName = $(ui.draggable).text() + " - ";
-				var HP = 1;
+				/*once an item has been dropped, get its information*/
+				var summonIndex = $(ui.draggable).attr("data-index");
+				var summonName = $(ui.draggable).text();
+				var HP = JSON.parse(localStorage.getItem("summon" + i)).name;
 				var ATK = 1;
 				var TCD = 1;
-				var ability = "Ability: " + "?";
-				var passive = "Passive: " + "?";
+				var ability = "?";
+				var passive = "?";
 				var flavorText = "No information on this summon...";
-				//get information from json regarding the dragged summon
 				
 				//set the target collection to the dragged summon's information
-				$(this).find(".field-title-name").html(summonName);
-				$(this).find("#field-title-hp").val(HP);
-				$(this).find("#field-title-atk").val(ATK);
-				$(this).find("#field-title-tcd").val(TCD);
-				$(this).find("#ability").html(ability);
-				$(this).find("#passive").html(passive);
-				$(this).find("#flavor-text").html(flavorText);
+				$(this).find(".field-title-name").html(summonName + " - ");
+				$(this).find("#field-title-hp").val(JSON.parse(localStorage.getItem(summonIndex)).hp);
+				$(this).find("#field-title-atk").val(JSON.parse(localStorage.getItem(summonIndex)).atk);
+				$(this).find("#field-title-tcd").val(JSON.parse(localStorage.getItem(summonIndex)).tcd);
+				$(this).find("#ability").html("Ability: " + JSON.parse(localStorage.getItem(summonIndex)).ability);
+				$(this).find("#passive").html("Passive: " + JSON.parse(localStorage.getItem(summonIndex)).passive);
+				$(this).find("#flavor-text").html(JSON.parse(localStorage.getItem(summonIndex)).flavortext);
 			}
 		});
 	</script>
