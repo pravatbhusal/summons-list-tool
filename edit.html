@@ -3,14 +3,151 @@
 
 	<header>
 		<title>SLT - Edit</title>
+		<!--style.css, googlefont, materializecss-->
+		<link href="styles/editstyles.css" type="text/css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+		<!--jquery, jqueryui, materializejs-->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+		
 	</header>
 
 	<main>
-
+		<!--navbar-->
+		<nav>
+			<div class="nav-wrapper" id="nav-background">
+				<ul class="left hide-on-med-and-down">
+				<li><a href="index.html" id="nav-buttons">Play</a></li>
+				<li><a href="edit.html" id="nav-buttons"style="background-color: #e2e2e2">Edit</a></li>
+				</ul>
+			</div>
+		</nav>
+		
+		<!--summon list and field text-->
+		<div class="row">
+			<div class="col s2">
+				<table id="summon-table">
+				  <tr>
+					<th>Summon List</th>
+				  </tr>
+				</table>
+			</div>
+			<div class="col s6">
+				<br>
+				<h5>Selected Summon: <span id="selected-summon" data-index="None">None</span></h5>
+				<br>
+				Edit Summon Name: <input class="field-title-name title browser-default" type="text">
+				<br>
+				Edit HP: <input id="field-title-hp" class="browser-default" type="number"></span>
+				<br>
+				Edit ATK: <input id="field-title-atk" class="browser-default" type="number"></span>
+				<br>
+				Edit TCD: <input id="field-title-tcd" class="browser-default" type="number"></span>
+				<br>
+				Edit Ability: <input class="browser-default" id="ability" type="text">
+				<br>
+				Edit Passive: <input class="browser-default" id="passive" type="text">
+				<br>
+				Edit Flavor Text: <input class="browser-default" id="flavor-text" type="text">
+				</p>
+				<a class="waves-effect waves-light btn green" onclick="saveSummon()"><i class="material-icons left">save</i>Save</a>
+				<a class="waves-effect waves-light btn blue" onclick="addSummon()"><i class="material-icons left">add</i>Add</a>
+				<a class="waves-effect waves-light btn red" onclick="deleteSummon()"><i class="material-icons left">delete</i>Delete</a>
+		</div>
 	</main>
 
 	<footer>
 
 	</footer>
+	
+	<script>
+		//get all the summons from the localStorage, and put it onto a table
+		for(var i = 0; i < localStorage.length; i++) {
+			//unparse the summon's JSON to get its name
+			var summonIndex = "summon" + i;
+			var summonName = JSON.parse(localStorage.getItem(summonIndex)).name;
+			//continuously check if a summon exists for the index until we cannot find one
+			if(summonName) {
+				//add new node within the table
+				var nodeTR = document.createElement("tr");
+				var nodeTD = document.createElement("td");
+				summonName = document.createTextNode(summonName);
+				nodeTD.appendChild(summonName);
+				nodeTD.setAttribute("data-index", (summonIndex));
+				nodeTD.id = "summon";
+				nodeTD.onclick = function() {clickedSummon(this)};
+				nodeTR.appendChild(nodeTD);
+				var table = document.getElementById("summon-table");
+				table.appendChild(nodeTR);
+			} else {
+				break;
+			}
+		}
+		function clickedSummon(summonIndex) {
+			summonIndex = summonIndex.getAttribute("data-index");
+			document.getElementsByClassName("field-title-name")[0].value = JSON.parse(localStorage.getItem(summonIndex)).name;
+			document.getElementById("selected-summon").innerHTML = JSON.parse(localStorage.getItem(summonIndex)).name;
+			document.getElementById("selected-summon").setAttribute("data-index", summonIndex);
+			document.getElementById("field-title-hp").value = JSON.parse(localStorage.getItem(summonIndex)).hp;
+			document.getElementById("field-title-atk").value = JSON.parse(localStorage.getItem(summonIndex)).atk;
+			document.getElementById("field-title-tcd").value = JSON.parse(localStorage.getItem(summonIndex)).tcd;
+			document.getElementById("ability").value = JSON.parse(localStorage.getItem(summonIndex)).ability;
+			document.getElementById("passive").value = JSON.parse(localStorage.getItem(summonIndex)).passive;
+			document.getElementById("flavor-text").value = JSON.parse(localStorage.getItem(summonIndex)).flavortext;
+		}
+		function addSummon() {
+			var summonName = document.getElementsByClassName("field-title-name")[0].value;
+			var summonHP = document.getElementById("field-title-hp").value;
+			var summonATK = document.getElementById("field-title-atk").value;
+			var summonTCD = document.getElementById("field-title-tcd").value;
+			var summonAbility = document.getElementById("ability").value;
+			var summonPassive = document.getElementById("passive").value;
+			var summonFlavorText = document.getElementById("flavor-text").value;
+			var summonData = {"name": summonName, "hp": summonHP, "atk": summonATK, "tcd": summonTCD, "ability": summonAbility,
+			"passive": summonPassive, "flavortext": summonFlavorText};
+			var totalItemsInStorage = localStorage.length;
+			if(summonName != "" && summonHP != "" && summonATK != "" && summonTCD != "" && summonAbility != "" && summonPassive != "" && summonFlavorText != "") {
+				localStorage.setItem(("summon" + totalItemsInStorage), JSON.stringify(summonData));
+				location.reload();
+			} else {
+				alert("Error: Please fill out all fields!");
+			}
+		}
+		function deleteSummon() {
+			var summonIndex = document.getElementById("selected-summon").getAttribute("data-index");
+			if(summonIndex == "None") {
+				alert("Error: You may not delete a summon that isn't selected!");
+			} else {
+				var deleteSummonConfirmation = confirm("Delete this summon?");
+				if (deleteSummonConfirmation == true) {
+					localStorage.removeItem(summonIndex);
+					location.reload();
+				}
+			}
+		}
+		function saveSummon() {
+			var summonIndex = document.getElementById("selected-summon").getAttribute("data-index");
+			var summonName = document.getElementsByClassName("field-title-name")[0].value;
+			var summonHP = document.getElementById("field-title-hp").value;
+			var summonATK = document.getElementById("field-title-atk").value;
+			var summonTCD = document.getElementById("field-title-tcd").value;
+			var summonAbility = document.getElementById("ability").value;
+			var summonPassive = document.getElementById("passive").value;
+			var summonFlavorText = document.getElementById("flavor-text").value;
+			var summonData = {"name": summonName, "hp": summonHP, "atk": summonATK, "tcd": summonTCD, "ability": summonAbility,
+			"passive": summonPassive, "flavortext": summonFlavorText};
+			if(summonName != "" && summonHP != "" && summonATK != "" && summonTCD != "" && summonAbility != "" && summonPassive != "" && summonFlavorText != "" && summonIndex != "None") {
+				localStorage.setItem(summonIndex, JSON.stringify(summonData));
+				location.reload();
+			} else if(summonIndex == "None"){
+				alert("Error: You may not save a summon that isn't selected!");
+			} else {
+				alert("Error: Please fill out all fields!");
+			}
+		}
+	</script>
 </body>
 </html>

@@ -41,9 +41,9 @@
 						<ul class="field-collection collection droppable">
 							<li class="collection-item">
 								<span class="field-title-name title"></span>
-								HP: <input id="field-title-hp" class="browser-default" type="number"></span>
-								ATK: <input id="field-title-atk" class="browser-default" type="number"></span>
-								TCD: <input id="field-title-tcd" class="browser-default" type="number"></span>
+								HP: <input id="field-title-hp" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
+								ATK: <input id="field-title-atk" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
+								TCD: <input id="field-title-tcd" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
 								<p>
 								<text id="ability">Ability:</text><br>
 								<text id="passive">Passive:</text><br>
@@ -54,9 +54,9 @@
 						<ul class="field-collection collection droppable">
 							<li class="collection-item">
 								<span class="field-title-name title"></span>
-								HP: <input id="field-title-hp" class="browser-default" type="number"></span>
-								ATK: <input id="field-title-atk" class="browser-default" type="number"></span>
-								TCD: <input id="field-title-tcd" class="browser-default" type="number"></span>
+								HP: <input id="field-title-hp" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
+								ATK: <input id="field-title-atk" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
+								TCD: <input id="field-title-tcd" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
 								<p>
 								<text id="ability">Ability:</text><br>
 								<text id="passive">Passive:</text><br>
@@ -68,9 +68,9 @@
 						<ul class="field-collection collection droppable">
 							<li class="collection-item">
 								<span class="field-title-name title"></span>
-								HP: <input id="field-title-hp" class="browser-default" type="number"></span>
-								ATK: <input id="field-title-atk" class="browser-default" type="number"></span>
-								TCD: <input id="field-title-tcd" class="browser-default" type="number"></span>
+								HP: <input id="field-title-hp" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
+								ATK: <input id="field-title-atk" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
+								TCD: <input id="field-title-tcd" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
 								<p>
 								<text id="ability">Ability:</text><br>
 								<text id="passive">Passive:</text><br>
@@ -81,9 +81,9 @@
 						<ul class="field-collection collection droppable">
 							<li class="collection-item">
 								<span class="field-title-name title"></span>
-								HP: <input id="field-title-hp" class="browser-default" type="number"></span>
-								ATK: <input id="field-title-atk" class="browser-default" type="number"></span>
-								TCD: <input id="field-title-tcd" class="browser-default" type="number"></span>
+								HP: <input id="field-title-hp" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
+								ATK: <input id="field-title-atk" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
+								TCD: <input id="field-title-tcd" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
 								<p>
 								<text id="ability">Ability:</text><br>
 								<text id="passive">Passive:</text><br>
@@ -96,9 +96,9 @@
 						<ul class="field-collection collection droppable" style="margin-top: 100px">
 							<li class="collection-item">
 								<span class="field-title-name title"></span>
-								HP: <input id="field-title-hp" class="browser-default" type="number"></span>
-								ATK: <input id="field-title-atk" class="browser-default" type="number"></span>
-								TCD: <input id="field-title-tcd" class="browser-default" type="number"></span>
+								HP: <input id="field-title-hp" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
+								ATK: <input id="field-title-atk" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
+								TCD: <input id="field-title-tcd" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
 								<p>
 								<text id="ability">Ability:</text><br>
 								<text id="passive">Passive:</text><br>
@@ -109,9 +109,9 @@
 						<ul class="field-collection collection droppable" style="margin-top: 175px">
 							<li class="collection-item">
 								<span class="field-title-name title"></span>
-								HP: <input id="field-title-hp" class="browser-default" type="number"></span>
-								ATK: <input id="field-title-atk" class="browser-default" type="number"></span>
-								TCD: <input id="field-title-tcd" class="browser-default" type="number"></span>
+								HP: <input id="field-title-hp" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
+								ATK: <input id="field-title-atk" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
+								TCD: <input id="field-title-tcd" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
 								<p>
 								<text id="ability">Ability:</text><br>
 								<text id="passive">Passive:</text><br>
@@ -133,7 +133,8 @@
 		//get all the summons from the localStorage, and put it onto a table
 		for(var i = 0; i < localStorage.length; i++) {
 			//unparse the summon's JSON to get its name
-			var summonName = JSON.parse(localStorage.getItem("summon" + i)).name;
+			var summonIndex = "summon" + i;
+			var summonName = JSON.parse(localStorage.getItem(summonIndex)).name;
 			//continuously check if a summon exists for the index until we cannot find one
 			if(summonName) {
 				//add new node within the table
@@ -141,7 +142,7 @@
 				var nodeTD = document.createElement("td");
 				summonName = document.createTextNode(summonName);
 				nodeTD.appendChild(summonName);
-				noteTD.setAttribute("data-index", ("summon" + i));
+				nodeTD.setAttribute("data-index", (summonIndex));
 				nodeTD.id = "summon";
 				nodeTD.className = "draggable";
 				nodeTR.appendChild(nodeTD);
@@ -162,15 +163,16 @@
 				/*once an item has been dropped, get its information*/
 				var summonIndex = $(ui.draggable).attr("data-index");
 				var summonName = $(ui.draggable).text();
-				var HP = JSON.parse(localStorage.getItem("summon" + i)).name;
+				var HP = 1;
 				var ATK = 1;
 				var TCD = 1;
 				var ability = "?";
 				var passive = "?";
-				var flavorText = "No information on this summon...";
+				var flavorText = "No biography on this summon...";
 				
 				//set the target collection to the dragged summon's information
 				$(this).find(".field-title-name").html(summonName + " - ");
+				$(this).find(".field-title-name").attr("data-index", summonIndex);
 				$(this).find("#field-title-hp").val(JSON.parse(localStorage.getItem(summonIndex)).hp);
 				$(this).find("#field-title-atk").val(JSON.parse(localStorage.getItem(summonIndex)).atk);
 				$(this).find("#field-title-tcd").val(JSON.parse(localStorage.getItem(summonIndex)).tcd);
@@ -179,6 +181,23 @@
 				$(this).find("#flavor-text").html(JSON.parse(localStorage.getItem(summonIndex)).flavortext);
 			}
 		});
+		
+		function checkStatValue(element) {
+			//if the value is less than 0 and its a summoner, then reset to the stat's original value
+			var summonIndex = element.parentNode.querySelector('.field-title-name').getAttribute("data-index");
+			if (element.value < 0 && summonIndex) {
+				//check what specific field we edited
+				if(element.id == "field-title-hp") {
+					element.value = JSON.parse(localStorage.getItem(summonIndex)).hp;
+				} else if(element.id == "field-title-atk") {
+					element.value = JSON.parse(localStorage.getItem(summonIndex)).atk;
+				} else if(element.id == "field-title-tcd") {
+					element.value = JSON.parse(localStorage.getItem(summonIndex)).tcd;
+				}
+			} else if(!summonIndex){
+				element.value = 0;
+			}
+		}
 	</script>
 </body>
 </html>
