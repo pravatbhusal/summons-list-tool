@@ -13,3 +13,6 @@ The client was a fellow friend of mine, so I decided to help him out.
 2. Extract the .zip file  
 3. Right click the "index.html" file and open it in your web-browser  
 4. Finished!
+
+# Demo
+Try it out here: https://shadowsych.github.io/summons-list-tool/index.html
