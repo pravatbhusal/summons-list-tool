@@ -134,10 +134,10 @@
 		for(var i = 0; i < localStorage.length; i++) {
 			//unparse the summon's JSON to get its name
 			var summonIndex = "summon" + i;
-			var summonName = JSON.parse(localStorage.getItem(summonIndex)).name;
 			//continuously check if a summon exists for the index until we cannot find one
-			if(summonName) {
+			if(localStorage.getItem(summonIndex) && localStorage.getItem(summonIndex) != "None") {
 				//add new node within the table
+				var summonName = JSON.parse(localStorage.getItem(summonIndex)).name;
 				var nodeTR = document.createElement("tr");
 				var nodeTD = document.createElement("td");
 				summonName = document.createTextNode(summonName);
@@ -148,8 +148,6 @@
 				nodeTR.appendChild(nodeTD);
 				var table = document.getElementById("summon-table");
 				table.appendChild(nodeTR);
-			} else {
-				break;
 			}
 		}
 		
