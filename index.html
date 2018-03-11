@@ -44,6 +44,7 @@
 								HP: <input id="field-title-hp" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
 								ATK: <input id="field-title-atk" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
 								TCD: <input id="field-title-tcd" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
+								<i onclick="swap(this)" id="field-swap" class="material-icons">swap_horiz</i>
 								<p>
 								<text id="ability">Ability:</text><br>
 								<text id="passive">Passive:</text><br>
@@ -57,6 +58,7 @@
 								HP: <input id="field-title-hp" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
 								ATK: <input id="field-title-atk" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
 								TCD: <input id="field-title-tcd" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
+								<i onclick="swap(this)" id="field-swap" class="material-icons">swap_horiz</i>
 								<p>
 								<text id="ability">Ability:</text><br>
 								<text id="passive">Passive:</text><br>
@@ -71,6 +73,7 @@
 								HP: <input id="field-title-hp" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
 								ATK: <input id="field-title-atk" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
 								TCD: <input id="field-title-tcd" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
+								<i onclick="swap(this)" id="field-swap" class="material-icons">swap_horiz</i>
 								<p>
 								<text id="ability">Ability:</text><br>
 								<text id="passive">Passive:</text><br>
@@ -84,6 +87,7 @@
 								HP: <input id="field-title-hp" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
 								ATK: <input id="field-title-atk" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
 								TCD: <input id="field-title-tcd" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
+								<i onclick="swap(this)" id="field-swap" class="material-icons">swap_horiz</i>
 								<p>
 								<text id="ability">Ability:</text><br>
 								<text id="passive">Passive:</text><br>
@@ -99,6 +103,7 @@
 								HP: <input id="field-title-hp" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
 								ATK: <input id="field-title-atk" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
 								TCD: <input id="field-title-tcd" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
+								<i onclick="swap(this)" id="field-swap" class="material-icons">swap_horiz</i>
 								<p>
 								<text id="ability">Ability:</text><br>
 								<text id="passive">Passive:</text><br>
@@ -112,6 +117,7 @@
 								HP: <input id="field-title-hp" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
 								ATK: <input id="field-title-atk" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
 								TCD: <input id="field-title-tcd" class="browser-default" type="number" oninput="checkStatValue(this)"></span>
+								<i onclick="swap(this)" id="field-swap" class="material-icons">swap_horiz</i>
 								<p>
 								<text id="ability">Ability:</text><br>
 								<text id="passive">Passive:</text><br>
@@ -130,6 +136,18 @@
 	</footer>
 	
 	<script>
+		//swap variables to swap selected collections
+		var swap1 = false;
+		var swap2 = false;
+		var summonIndex1 = "";
+		var summonTitle1 = "";
+		var summonHP1 = "";
+		var summonATK1 = "";
+		var summonTCD1 = "";
+		var summonAbility1 = "";
+		var summonPassive1 = "";
+		var summonFlavorText1 = "";
+		
 		//get all the summons from the localStorage, and put it onto a table
 		for(var i = 0; i < localStorage.length; i++) {
 			//unparse the summon's JSON to get its name
@@ -195,6 +213,55 @@
 			} else if(!summonIndex){
 				element.value = 0;
 			}
+		}
+		var test
+		function swap(element) {
+			//check if this is our first selected swap item
+			if(swap1 == false) {
+				element.parentNode.style.backgroundColor = "#35ea75";
+				summonIndex1 = element.parentNode.querySelector('.field-title-name');
+				summonTitle1 = element.parentNode.querySelector('.field-title-name');
+				summonHP1 = element.parentNode.querySelector('#field-title-hp');
+				summonATK1 = element.parentNode.querySelector('#field-title-atk');
+				summonTCD1 = element.parentNode.querySelector('#field-title-tcd');
+				summonAbility1 = element.parentNode.querySelector('#ability');
+				summonPassive1 = element.parentNode.querySelector('#passive');
+				summonFlavorText1 = element.parentNode.querySelector('#flavor-text');
+				swap1 = true;
+			//else, we're dealing with the second selected swap item so now let's swap the two
+			} else if(swap1 == true && swap2 == false) {
+				var summonIndex2 = element.parentNode.querySelector('.field-title-name').getAttribute("data-index");
+				var summonTitle2 = element.parentNode.querySelector('.field-title-name').innerHTML;
+				var summonHP2 = element.parentNode.querySelector('#field-title-hp').value;
+				var summonATK2 = element.parentNode.querySelector('#field-title-atk').value;
+				var summonTCD2 = element.parentNode.querySelector('#field-title-tcd').value;
+				var summonAbility2 = element.parentNode.querySelector('#ability').innerHTML;
+				var summonPassive2 = element.parentNode.querySelector('#passive').innerHTML;
+				var summonFlavorText2 = element.parentNode.querySelector('#flavor-text').innerHTML;
+				
+				//swap the two items
+				element.parentNode.querySelector('.field-title-name').setAttribute("data-index", summonIndex1.getAttribute("data-index"));
+				element.parentNode.querySelector('.field-title-name').innerHTML = summonTitle1.innerHTML;
+				element.parentNode.querySelector('#field-title-hp').value = summonHP1.value;
+				element.parentNode.querySelector('#field-title-atk').value = summonATK1.value;
+				element.parentNode.querySelector('#field-title-tcd').value = summonTCD1.value;
+				element.parentNode.querySelector('#ability').innerHTML = summonAbility1.innerHTML;
+				element.parentNode.querySelector('#passive').innerHTML = summonPassive1.innerHTML;
+				element.parentNode.querySelector('#flavor-text').innerHTML = summonFlavorText1.innerHTML;
+				summonIndex1.parentNode.style.backgroundColor = "white";
+				summonIndex1.setAttribute("data-index", summonIndex2);
+				summonTitle1.innerHTML = summonTitle2;
+				summonHP1.value = summonHP2;
+				summonATK1.value = summonATK2;
+				summonTCD1.value = summonTCD2;
+				summonAbility1.innerHTML = summonAbility2;
+				summonPassive1.innerHTML = summonPassive2;
+				summonFlavorText1.innerHTML = summonFlavorText2;
+				swap1 = false;
+				swap2 = false;
+			}
+			
+			
 		}
 	</script>
 </body>

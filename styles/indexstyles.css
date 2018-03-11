@@ -41,6 +41,10 @@ td, th {
 #field-title-tcd {
 	width: 50px;
 }
+#field-swap:hover {
+	cursor: pointer;
+	color: green;
+}
 hr {
 	width: 1045px;
 }
