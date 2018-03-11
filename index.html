@@ -28,7 +28,7 @@
 		
 		<!--summon list and field text-->
 		<div class="row">
-			<div class="col s2">
+			<div style="height: 90%; overflow: auto;" class="col s2">
 				<table id="summon-table">
 				  <tr>
 					<th>Summon List</th>
@@ -169,8 +169,8 @@
 			}
 		}
 		
-		//draggable summons (revert when it hits a droppable, and make its z-index stack above divs)
-		$(".draggable").draggable({revert: "valid", stack: "div"});
+		//draggable summons (allow for draggable items to be above all elements in the body and clone itself)
+		$(".draggable").draggable({appendTo: "body", containment: "window", scroll: "false", helper: "clone"});
 		
 		//droppable field collections
 		$( ".droppable" ).droppable({
