@@ -11,7 +11,7 @@ The client was a fellow friend of mine, so I decided to help him out.
 # Set-up
 1. Download this repository as a .zip file  
 2. Extract the .zip file  
-3. Right click the "index.html" file and open it in your web-browser  
+3. Right click the "index.html" file and open it with your web-browser (Google Chrome preferred)  
 4. Finished!
 
 # Demo
