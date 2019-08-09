@@ -1,58 +1,71 @@
 /*navbar*/
 #nav-background {
-	background-color: white;
+  background-color: white;
 }
+
 #nav-buttons {
-	color: black;
+  color: black;
 }
 
 /*summon list table*/
 table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
+
 td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
 }
+
 #summon:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 /*summon field*/
 .field-collection {
-	width: 500px;
+  width: 500px;
 }
+
 #selected-summon {
-	color: green;
+  color: green;
 }
+
 #field-title-text {
-	font-weight: bold;
-	text-align: center;
+  font-weight: bold;
+  text-align: center;
 }
+
 .field-title-name {
-	width: 500px;
+  width: 500px;
 }
+
 #field-title-hp {
-	width: 50px;
+  width: 50px;
 }
+
 #field-title-atk {
-	width: 50px;
+  width: 50px;
 }
+
 #field-title-tcd {
-	width: 50px;
+  width: 50px;
 }
+
 #ability {
-	width: 350px;
+  width: 350px;
 }
+
 #passive {
-	width: 350px;
+  width: 350px;
 }
+
 #flavor-text {
-	width: 350px;
+  width: 350px;
 }
+
 hr {
-	width: 1045px;
+  width: 1045px;
 }

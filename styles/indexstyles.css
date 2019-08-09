@@ -1,50 +1,60 @@
 /*navbar*/
 #nav-background {
-	background-color: white;
+  background-color: white;
 }
+
 #nav-buttons {
-	color: black;
+  color: black;
 }
 
 /*summon list table*/
 table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
+
 td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
 }
+
 #summon:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 /*summon field*/
 .field-collection {
-	width: 500px;
+  width: 500px;
 }
+
 #field-title-text {
-	font-weight: bold;
-	text-align: center;
+  font-weight: bold;
+  text-align: center;
 }
+
 .field-title-name {
-	font-weight: bold;
+  font-weight: bold;
 }
+
 #field-title-hp {
-	width: 50px;
+  width: 50px;
 }
+
 #field-title-atk {
-	width: 50px;
+  width: 50px;
 }
+
 #field-title-tcd {
-	width: 50px;
+  width: 50px;
 }
+
 #field-swap:hover {
-	cursor: pointer;
-	color: green;
+  cursor: pointer;
+  color: green;
 }
+
 hr {
-	width: 1045px;
+  width: 1045px;
 }
